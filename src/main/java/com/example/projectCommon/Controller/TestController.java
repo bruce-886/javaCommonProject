@@ -1,6 +1,6 @@
 package com.example.projectCommon.Controller;
 
-import com.example.projectCommon.Model.MXRecord;
+import com.example.projectCommon.Model.ReadRecord;
 import com.example.projectCommon.Service.BackGroundOps;
 import com.example.projectCommon.Utils.OKHTTPHelper;
 import org.slf4j.Logger;
@@ -47,8 +47,8 @@ public class TestController {
     }
 
     @GetMapping(value = "/testURLParameter")
-    public @ResponseBody ResponseEntity<String> testURLParameter(@RequestParam("eqpId") String toolId,
-                                                                 @RequestParam("partId") String partId) {
+    public @ResponseBody ResponseEntity<String> testURLParameter(@RequestParam("bookId") String bookId,
+                                                                 @RequestParam("labelId") String labelId) {
 
         return ResponseEntity.ok().body(backGroundOps.test());
     }
@@ -72,19 +72,19 @@ public class TestController {
     }
 
     @PostMapping(value = "/testPost")
-    public @ResponseBody ResponseEntity<String> testPost(@RequestBody MXRecord mxRecord) {
+    public @ResponseBody ResponseEntity<String> testPost(@RequestBody ReadRecord readRecord) {
         return ResponseEntity.ok().body(backGroundOps.test());
     }
 
 
     @PostMapping(value = "/testFormData", produces = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public @ResponseBody ResponseEntity<String> testFormData(@RequestParam("eqpId") String eqpId,
-                                                             @RequestParam("subrecipe") MultipartFile srmsFile) throws IOException {
+    public @ResponseBody ResponseEntity<String> testFormData(@RequestParam("bookId") String bookId,
+                                                             @RequestParam("bookContent") MultipartFile bookContent) throws IOException {
 
-        String content = new String(srmsFile.getBytes());
-        logger.info(srmsFile.getOriginalFilename());
-        logger.info(srmsFile.getContentType());
-        logger.info(srmsFile.getName());
+        String content = new String(bookContent.getBytes());
+        logger.info(bookContent.getOriginalFilename());
+        logger.info(bookContent.getContentType());
+        logger.info(bookContent.getName());
         logger.info(content);
         return ResponseEntity.ok().body(backGroundOps.test());
     }

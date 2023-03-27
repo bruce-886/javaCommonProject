@@ -3,15 +3,15 @@ package com.example.projectCommon.Model;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
 
-public class MXRecord {
+public class ReadRecord {
 
     @CsvBindByName(column = "Tbl_updt")
     @CsvBindByPosition(position = 0)
     private String updateTime;
 
-    @CsvBindByName(column = "eqp_id")
+    @CsvBindByName(column = "book_id")
     @CsvBindByPosition(position = 1)
-    private String eqpId;
+    private String bookId;
 
     public String getUpdateTime() {
         return updateTime;
@@ -21,19 +21,19 @@ public class MXRecord {
         this.updateTime = updateTime;
     }
 
-    public String getEqpId() {
-        return eqpId;
+    public String getBookId() {
+        return bookId;
     }
 
-    public void setEqpId(String eqpId) {
-        this.eqpId = eqpId;
+    public void setBookId(String bookId) {
+        this.bookId = bookId;
     }
 
     @Override
     public String toString() {
         return "MXRecord{" +
                 "updateTime='" + updateTime + '\'' +
-                ", eqpId='" + eqpId + '\'' +
+                ", bookId='" + bookId + '\'' +
                 '}';
     }
 }
